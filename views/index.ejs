@@ -5,34 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/basic.css">
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 
 <body>
     <nav class="navigation">
-        <div class="logo">Frutti</div>
+        <div class="logo"><a href="/">Frutti</a></div>
         <div class="middle-nav">
             <input type="text" placeholder="Search">
         </div>
         <div class="right-nav">
-            <div class="products">Products</div>
-            <div class="categories">Categories</div>
+            <div class="products"><a href="/products">Products</a></div>
+            <div class="categories"><a href="/categories">Categories</a></div>
         </div>
 
     </nav>
     <main>
         <div class="info">Welcome to my Project. Here you can manage your groceriec.</div>
         <div class="container">
-            <div class="prod">
-            <img src="/food.jpg" alt="" class="bg">
-            <div class="text">Products</div>
+            <a href="/products">
+                <div class="prod">
+                    <img src="/food.jpg" alt="" class="bg">
+                    <div class="text">Products</div>
+                </div>
+            </a>
+            <a href="/categories">
+                <div class="cat">
+                    <img src="/food.jpg" alt="" class="bg">
+                    <div class="text">Categories</div>
+                </div>
+            </a>
         </div>
-        <div class="cat">
-            <img src="/food.jpg" alt="" class="bg">
-            <div class="text">Categories</div>
-        </div>
-        </div>
-        
+
     </main>
 
     <footer>&copy; 2025 hubfrt1337 | The Odin Project </footer>

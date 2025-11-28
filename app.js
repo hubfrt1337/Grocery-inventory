@@ -11,4 +11,11 @@ app.get('/', (req, res) => {
     res.render("index")
 })
 
+app.get('/categories', (req, res) => {
+    res.render('categories')
+})
+app.get('/products', (req, res) => {
+    res.render("products")
+})
+
 app.listen(PORT, console.log(`Server is listening on: ${PORT}`))
