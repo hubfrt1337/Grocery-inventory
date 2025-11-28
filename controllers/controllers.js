@@ -7,7 +7,7 @@ async function getCategories(req, res){
 }
 
 async function getProducts(req, res){
-    const products = await db.getAllProducts();
+    const products = await db.getAllData();
     console.log(products, "products");
     res.render("products", { products: products })
 }

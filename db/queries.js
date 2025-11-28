@@ -1,6 +1,11 @@
 const pool = require('./pool')
 
 
+async function getAllData(){
+    const {rows} = await pool.query("SELECT * FROM products")
+    return rows;
+}
+
 async function getAllCategories(){
     const {rows} = await pool.query("SELECT category FROM products")
     return rows
@@ -13,5 +18,6 @@ async function getAllProducts(){
 
 module.exports = {
     getAllCategories,
-    getAllProducts
+    getAllProducts,
+    getAllData
 }
