@@ -32,8 +32,17 @@
 
         </div>
         <div class="food-products-container">
-            <% if(products) { %>
-            <% } %>
+            <% if(products) { 
+                products.forEach(prod => {
+            %>
+                <div class="single-food-product">
+                    <img src="<%=prod.image_url %>" alt="food image" class="product-image">
+                    <div class="product-name"><%= prod.product_name %></div>
+                    <div class="product-category"><%= prod.category_name %></div>
+                    <div class="product-quantity">Quantity: <%= prod.quantity %></div>
+                    <div class="product-price">Price: $<%= prod.price %></div>
+                </div>
+              <%  })} %>
         </div>
     </main>
 
