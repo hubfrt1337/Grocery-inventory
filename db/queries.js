@@ -16,8 +16,15 @@ async function getAllProducts(){
     return rows;
 }
 
+async function getSingleCategory(id){
+    console.log(id)
+    const {rows} = await pool.query("SELECT product_name, category, price, quantity, image_url FROM products WHERE category = ($1)", [id])
+    return rows;
+}
+
 module.exports = {
     getAllCategories,
     getAllProducts,
-    getAllData
+    getAllData,
+    getSingleCategory
 }

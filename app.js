@@ -1,6 +1,9 @@
 const express = require('express');
 require("dotenv").config({path: "./.env.local"})
 const userControllers = require("./controllers/controllers")
+const {productsRoute} = require("./routes/productsRoute")
+
+
 const app = express();
 app.set("view engine", 'ejs')
 app.use(express.static("public"))
@@ -15,6 +18,11 @@ app.get('/', (req, res) => {
 app.get('/categories', (req, res) => {
     res.render('categories')
 })
-app.get('/products', userControllers.getProducts)
+app.use('/products', productsRoute)
+
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).json({message: " There occur an error"})
+})
 
 app.listen(PORT, console.log(`Server is listening on: ${PORT}`))

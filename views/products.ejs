@@ -21,15 +21,22 @@
     </nav>
     <main>
         <div class="filters">
-            <div class="filter-category">Fruits</div>
+            <% if(productsCategory.length > 0) { productsCategory.forEach(prod => {
+                %> <div class="filter-category">
+                        <a href="/products/<%=prod.category %>"><%= prod.category %></a>
+                    </div>
+                <%
+            }) } %>
+            <!--
+                <div class="filter-category">Fruits</div>
             <div class="filter-category">Vegetables</div>
             <div class="filter-category">Beverages</div>
             <div class="filter-category">Meat</div>
             <div class="filter-category">Seafood</div>
             <div class="filter-category">Dairy</div>
             <div class="filter-category">Grains and Cereals</div>            
-            <div class="filter-category">Frozen food</div>            
-
+            <div class="filter-category">Frozen food</div>  
+            -->
         </div>
         <div class="food-products-container">
             <% if(products) { 
