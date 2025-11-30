@@ -105,3 +105,8 @@ input{
     width: 200px;
     display: block;
 }
+.select-container{
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 10px;
+}

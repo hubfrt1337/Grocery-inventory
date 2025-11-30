@@ -25,19 +25,29 @@
 
         <div class="form-container">
             <form action="/products" method="POST" enctype="multipart/form-data" class="form-add">
-                <label for="image">Image url:</label>
+                <label for="image">Select image:</label>
                 <input type="file" name="image" id="image" accept="image/*" required>
-                <label for="name">Product:name</label>
+                <label for="name">Product name:</label>
                 <input type="text" id="name" name="name" required>
+                <div class="select-container">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <% if(productsCategory.length > 0){
+                        productsCategory.forEach(prod => {
+                            %> <option value="<%= prod.category %>"><%= prod.category %></option>
+                     <%   })
+                    } %>
+                </select>
+                </div>
                 <label for="quantity">Quantity:</label>
                 <input type="text" id="quantity" name="quantity">
                 <label for="price">Price:</label>
-                <input type="number" id="price" name="price" required>
+                <input type="number" id="price" name="price" step="0.01" min="0" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
         <div class="filters">
-            <% if(productsCategory.length> 0) { productsCategory.forEach(prod => {
+            <% if(productsCategory.length > 0) { productsCategory.forEach(prod => {
                 %> <a href="/products/<%=prod.category %>">
                     <div class="filter-category">
                         <%= prod.category %>

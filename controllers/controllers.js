@@ -23,7 +23,8 @@ async function getProductCategory(req, res){
 
 async function postProduct(req, res){
     const {name, quantity, price, category} = req.body;
-    console.log(req.file.filename) 
+    const url = req.file.filename;
+    await db.insertProduct(name, category, quantity, price, url)
     res.redirect("/products")
 }
 

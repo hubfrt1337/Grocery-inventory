@@ -1,6 +1,6 @@
- const btn = document.querySelector(".add-js")
+ /*const btn = document.querySelector(".add-js")
 
 btn.addEventListener("click", () => {
     console.log("małpa")
 })
-    
+    */
