@@ -1,5 +1,7 @@
 const db = require("../db/queries")
 
+
+
 async function getCategories(req, res){
     const categories = await db.getAllCategories();
     res.send()
@@ -16,8 +18,18 @@ async function getProductCategory(req, res){
     res.render("products", {products: product, productsCategory: products})
 }
 
+
+
+
+async function postProduct(req, res){
+    const {name, quantity, price, category} = req.body;
+    console.log(req.file.filename) 
+    res.redirect("/products")
+}
+
 module.exports = {
     getCategories, 
     getProducts,
-    getProductCategory
+    getProductCategory,
+    postProduct
 }

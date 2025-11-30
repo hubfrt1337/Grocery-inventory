@@ -1,8 +1,6 @@
 const express = require('express');
 require("dotenv").config({path: "./.env.local"})
-const userControllers = require("./controllers/controllers")
 const {productsRoute} = require("./routes/productsRoute")
-
 
 const app = express();
 app.set("view engine", 'ejs')
@@ -10,6 +8,7 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3000;
+
 
 app.get('/', (req, res) => {
     res.render("index")

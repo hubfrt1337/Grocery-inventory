@@ -17,14 +17,18 @@ async function getAllProducts(){
 }
 
 async function getSingleCategory(id){
-    console.log(id)
     const {rows} = await pool.query("SELECT product_name, category, price, quantity, image_url FROM products WHERE category = ($1)", [id])
     return rows;
+}
+
+async function insertProduct(name, category, quantity, price, url){
+    await pool.query("INSERT INTO products (product_name, category, price, quantity, image_url) VALUES ($1, $2, $3, $4, $5)", [name, category, price, quantity, url])
 }
 
 module.exports = {
     getAllCategories,
     getAllProducts,
     getAllData,
-    getSingleCategory
+    getSingleCategory,
+    insertProduct
 }
