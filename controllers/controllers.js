@@ -4,7 +4,7 @@ const db = require("../db/queries")
 
 async function getCategories(req, res){
     const categories = await db.getAllCategories();
-    res.send()
+    res.render('categories', {categories: categories})
 }
 
 async function getProducts(req, res){

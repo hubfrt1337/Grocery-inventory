@@ -9,6 +9,7 @@ async function getAllData(){
 // return all categories of the table
 async function getAllCategories(){
     const {rows} = await pool.query("SELECT category FROM products")
+    console.log(rows)
     return rows
 }
 

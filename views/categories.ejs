@@ -32,14 +32,10 @@
             <button class="add">Add category +</button>
         </div>
         <div class="categories-flex">
-            <div class="single-category">Fruits</div>
-            <div class="single-category">Vegetables</div>
-            <div class="single-category">Beverages</div>
-            <div class="single-category">Meat</div>
-            <div class="single-category">Seafood</div>
-            <div class="single-category">Dairy</div>
-            <div class="single-category">Grains and Cereals</div>
-            <div class="single-category">Frozen Foods</div>
+            <% if(categories.length > 0) categories.forEach(cat => {
+                %>
+                <div class="single-category"><%=cat.category %></div>
+            <% }) %>
         </div>
         
     </main>
