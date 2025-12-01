@@ -1,16 +1,18 @@
 const pool = require('./pool')
 
-
+// return all data of the products table
 async function getAllData(){
     const {rows} = await pool.query("SELECT * FROM products")
     return rows;
 }
 
+// return all categories of the table
 async function getAllCategories(){
     const {rows} = await pool.query("SELECT category FROM products")
     return rows
 }
 
+// return all names of products
 async function getAllProducts(){
     const {rows} = await pool.query("SELECT product_name FROM products")
     return rows;
