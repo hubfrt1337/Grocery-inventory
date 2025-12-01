@@ -27,10 +27,15 @@ async function insertProduct(name, category, quantity, price, url){
     await pool.query("INSERT INTO products (product_name, category, price, quantity, image_url) VALUES ($1, $2, $3, $4, $5)", [name, category, price, quantity, url])
 }
 
+
+async function insertCategory(category){
+    await pool.query("INSERT INTO products (category) VALUES ($1)", [category])
+}
 module.exports = {
     getAllCategories,
     getAllProducts,
     getAllData,
     getSingleCategory,
-    insertProduct
+    insertProduct,
+    insertCategory
 }

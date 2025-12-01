@@ -1,6 +1,7 @@
 const express = require('express');
 require("dotenv").config({path: "./.env.local"})
 const {productsRoute} = require("./routes/productsRoute")
+const {categoryRoute} = require("./routes/categoryRoute")
 
 const app = express();
 app.set("view engine", 'ejs')
@@ -14,9 +15,7 @@ app.get('/', (req, res) => {
     res.render("index")
 })
 
-app.get('/categories', (req, res) => {
-    res.render('categories')
-})
+app.use('/categories', categoryRoute)
 app.use('/products', productsRoute)
 
 app.use((err, req, res, next) => {
