@@ -39,14 +39,17 @@ a{
 .middle-nav{
     flex: 1;
     max-width: 500px;
+    
 }
 
 input{
+    display: block;
     width: 100%;
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: none;
     max-width: 500px;
+    margin: 0;
 }
 
 .right-nav{
