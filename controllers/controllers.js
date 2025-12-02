@@ -23,19 +23,25 @@ async function getProducts(req, res) {
     const category = req.query.category;
     if (sort || category) {
         if (sort && !category) {
-            //render all products with ORDER BY
+            // render all products ordered
             const product = await db.getAllSorted(sort)
-            res.render("products", {products: product, productsCategory: unique})
-        } 
-        if(category && !sort) {
-            const product = await db.getSingleCategory(category)
-            res.render("products", { products: product, productsCategory: unique })
+            return res.render("products", { products: product, productsCategory: unique })
+        } else if (category && !sort) {
+            const product = category === "all" ? products : await db.getSingleCategory(category)
+            return res.render("products", { products: product, productsCategory: unique })
         } else {
-            //render both
+            // both sort and category present, or other combinations
+            let product;
+            if (category === 'all') {
+                product = await db.getAllSorted(sort)
+            } else {
+                product = await db.getSortedProducts(sort, category)
+            }
+            return res.render("products", { products: product, productsCategory: unique })
         }
-    } else {
-        res.render("products", { products: products, productsCategory: unique })
     }
+
+    return res.render("products", { products: products, productsCategory: unique })
 }
 
 

@@ -38,7 +38,7 @@ async function insertCategory(category){
 }
 
 async function getSortedProducts(sort, category){
-    const order = sort === 'desc' ? "DESC" : "ASC";
+    const order = checkSort(sort)
     const {rows} = await pool.query(`SELECT * FROM products WHERE category = ($1) ORDER BY price ${order}`, [category]);
     return rows;
 }
