@@ -2,57 +2,74 @@ const db = require("../db/queries")
 
 
 
-function returnUniqueArray(array){
+function returnUniqueArray(array) {
     const newArray = array.map(cat => cat.category)
     return [...new Set(newArray)]
 }
 
-async function getCategories(req, res){
+async function getCategories(req, res) {
     const categories = await db.getAllCategories();
     const newArr = categories.map(cat => cat.category)
     const unique = [... new Set(newArr)]
-   // findFilter()
-    res.render('categories', {categories: unique})
+    // findFilter()
+    res.render('categories', { categories: unique })
 }
 
-async function getProducts(req, res){
+async function getProducts(req, res) {
     const products = await db.getAllData();
     const newArr = products.map(cat => cat.category)
     const unique = [... new Set(newArr)]
-    res.render("products", { products: products, productsCategory: unique })
+    const sort = req.query.sort;
+    const category = req.query.category;
+    if (sort || category) {
+        if (sort && !category) {
+            //render all products with ORDER BY
+            const product = await db.getAllSorted(sort)
+            res.render("products", {products: product, productsCategory: unique})
+        } 
+        if(category && !sort) {
+            const product = await db.getSingleCategory(category)
+            res.render("products", { products: product, productsCategory: unique })
+        } else {
+            //render both
+        }
+    } else {
+        res.render("products", { products: products, productsCategory: unique })
+    }
 }
 
 
 // controller for displaying product page with all the filter categories and display products of only choosen category
-async function getProductCategory(req, res){
+async function getProductCategory(req, res) {
     const product = await db.getSingleCategory(req.params.id);
     const unique = returnUniqueArray(await db.getAllData())
-    res.render("products", {products: product, productsCategory: unique})
+    console.log("działa to w ogole?")
+    res.render("products", { products: product, productsCategory: unique })
 }
 
 
 // controller for handling POST method and adding single product to the page
 
-async function postProduct(req, res){
-    const {name, quantity, price, category} = req.body;
+async function postProduct(req, res) {
+    const { name, quantity, price, category } = req.body;
     const url = req.file.filename;
     await db.insertProduct(name, category, quantity, price, url)
     res.redirect("/products")
 }
 
-async function postCategory(req, res){
-    const {category} = req.body;
+async function postCategory(req, res) {
+    const { category } = req.body;
     await db.insertCategory(category)
     res.redirect("/categories")
 }
 
-async function getAscProducts(req, res){
+async function getAscProducts(req, res) {
     const product = await db.getAscProducts();
     const products = await db.getAllData();
-    res.render("products", {products: product, productsCategory: products})
+    res.render("products", { products: product, productsCategory: products })
 }
 module.exports = {
-    getCategories, 
+    getCategories,
     getProducts,
     getProductCategory,
     postProduct,

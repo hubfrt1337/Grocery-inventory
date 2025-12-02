@@ -17,7 +17,7 @@ const upload = multer({storage})
 
 productsRoute.get("/", userControllers.getProducts)
 
-productsRoute.get("/:id", userControllers.getProductCategory)
+// productsRoute.get("/:id", userControllers.getProductCategory)
 
 productsRoute.post('/', upload.single("image"), userControllers.postProduct)
 module.exports = {productsRoute}

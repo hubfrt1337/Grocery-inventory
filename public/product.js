@@ -17,16 +17,3 @@ window.addEventListener("click", (e) => {
 
 })
 
-
-const selected = document.querySelector("input[name='sort']:checked");
-
-/*
-if(selected){
-    const value = selected.value;
-    fetch("/products", {
-        method: "POST",
-        headers: {"Content-Type": 'application/json'},
-        body: JSON.stringify({sort: value})
-    })
-}
-    */

@@ -1,5 +1,9 @@
 const pool = require('./pool')
 
+function checkSort(sort){
+    return sort === "desc" ? "DESC" : "ASC";
+}
+
 // return all data of the products table
 async function getAllData(){
     const {rows} = await pool.query("SELECT * FROM products")
@@ -33,8 +37,15 @@ async function insertCategory(category){
     await pool.query("INSERT INTO products (category) VALUES ($1)", [category])
 }
 
-async function getAscProducts(){
-    const {rows} = await pool.query("SELECT * FROM products ORDER BY price");
+async function getSortedProducts(sort, category){
+    const order = sort === 'desc' ? "DESC" : "ASC";
+    const {rows} = await pool.query(`SELECT * FROM products WHERE category = ($1) ORDER BY price ${order}`, [category]);
+    return rows;
+}
+
+async function getAllSorted(sort){
+    const order = checkSort(sort);
+    const {rows} = await pool.query(`SELECT * FROM products ORDER BY price ${order}`)
     return rows;
 }
 
@@ -46,5 +57,6 @@ module.exports = {
     getSingleCategory,
     insertProduct,
     insertCategory,
-    getAscProducts
+    getSortedProducts,
+    getAllSorted
 }
