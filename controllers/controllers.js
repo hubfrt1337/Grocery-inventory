@@ -11,6 +11,7 @@ async function getCategories(req, res){
     const categories = await db.getAllCategories();
     const newArr = categories.map(cat => cat.category)
     const unique = [... new Set(newArr)]
+   // findFilter()
     res.render('categories', {categories: unique})
 }
 
@@ -18,7 +19,6 @@ async function getProducts(req, res){
     const products = await db.getAllData();
     const newArr = products.map(cat => cat.category)
     const unique = [... new Set(newArr)]
-    console.log(unique)
     res.render("products", { products: products, productsCategory: unique })
 }
 

@@ -11,8 +11,22 @@ formAdd.addEventListener('submit', () => {
 })
 
 window.addEventListener("click", (e) => {
-    if(e.target === formContainer){
+    if (e.target === formContainer) {
         formContainer.style.display = 'none';
     }
-    
+
 })
+
+
+const selected = document.querySelector("input[name='sort']:checked");
+
+/*
+if(selected){
+    const value = selected.value;
+    fetch("/products", {
+        method: "POST",
+        headers: {"Content-Type": 'application/json'},
+        body: JSON.stringify({sort: value})
+    })
+}
+    */
