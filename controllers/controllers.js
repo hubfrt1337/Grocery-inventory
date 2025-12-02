@@ -4,7 +4,9 @@ const db = require("../db/queries")
 
 async function getCategories(req, res){
     const categories = await db.getAllCategories();
-    res.render('categories', {categories: categories})
+    const newArr = categories.map(cat => cat.category)
+    const unique = [... new Set(newArr)]
+    res.render('categories', {categories: unique})
 }
 
 async function getProducts(req, res){
