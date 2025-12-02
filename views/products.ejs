@@ -30,14 +30,15 @@
                 <label for="name">Product name:</label>
                 <input type="text" id="name" name="name" required>
                 <div class="select-container">
-                <label for="category">Category:</label>
-                <select id="category" name="category" required>
-                    <% if(productsCategory.length > 0){
-                        productsCategory.forEach(prod => {
-                            %> <option value="<%= prod.category %>"><%= prod.category %></option>
-                     <%   })
-                    } %>
-                </select>
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <% if(productsCategory.length > 0){
+                            productsCategory.forEach(prod => {
+                            %> <option value="<%= prod %>">
+                                <%= prod %>
+                            </option>
+                            <% }) } %>
+                    </select>
                 </div>
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity">
@@ -47,12 +48,26 @@
             </form>
         </div>
         <div class="filters">
+            <div class="price-filters">
+
+                <label>Sort by price:</label>
+                <div class="div-asc">
+                    <label class="label-asc" for="asc">Ascending </label>
+                    <input type="radio" id="asc" name="sort" value="asc">
+                </div>
+                <div class="div-desc">
+                    <label class="label-desc" for="desc">Descending</label>
+                    <input type="radio" id="desc" name="sort" value="desc">
+                </div>
+            </div>
+
+
             <% if(productsCategory.length > 0) { productsCategory.forEach(prod => {
-                %> <a href="/products/<%=prod.category %>">
+                %> <a href="/products/<%=prod %>">
                     <div class="filter-category">
-                        <%= prod.category %>
+                        <%= prod %>
                     </div>
-                    
+
                 </a>
                 <% }) } %>
                     <!--
@@ -84,7 +99,7 @@
                     </div>
                 </div>
                 <% }})} %>
-                <div class="single-food-product"><button class="add-product add-js">Add product +</button></div>
+                    <div class="single-food-product"><button class="add-product add-js">Add product +</button></div>
         </div>
     </main>
 

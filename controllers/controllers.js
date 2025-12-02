@@ -2,6 +2,11 @@ const db = require("../db/queries")
 
 
 
+function returnUniqueArray(array){
+    const newArray = array.map(cat => cat.category)
+    return [...new Set(newArray)]
+}
+
 async function getCategories(req, res){
     const categories = await db.getAllCategories();
     const newArr = categories.map(cat => cat.category)
@@ -11,15 +16,18 @@ async function getCategories(req, res){
 
 async function getProducts(req, res){
     const products = await db.getAllData();
-    res.render("products", { products: products, productsCategory: products })
+    const newArr = products.map(cat => cat.category)
+    const unique = [... new Set(newArr)]
+    console.log(unique)
+    res.render("products", { products: products, productsCategory: unique })
 }
 
 
 // controller for displaying product page with all the filter categories and display products of only choosen category
 async function getProductCategory(req, res){
     const product = await db.getSingleCategory(req.params.id);
-    const products = await db.getAllData();
-    res.render("products", {products: product, productsCategory: products})
+    const unique = returnUniqueArray(await db.getAllData())
+    res.render("products", {products: product, productsCategory: unique})
 }
 
 
@@ -36,6 +44,12 @@ async function postCategory(req, res){
     const {category} = req.body;
     await db.insertCategory(category)
     res.redirect("/categories")
+}
+
+async function getAscProducts(req, res){
+    const product = await db.getAscProducts();
+    const products = await db.getAllData();
+    res.render("products", {products: product, productsCategory: products})
 }
 module.exports = {
     getCategories, 

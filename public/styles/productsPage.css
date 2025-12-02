@@ -135,3 +135,27 @@ input[type=file]{
 .middle-input{
     margin: 0;
 }
+
+#asc,
+#desc{
+    display: inline-block;
+    margin: 0;
+    height: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.div-asc,
+.div-desc{
+    display: grid;
+    grid-template-columns: 110px 20px;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-asc,
+.label-desc{
+}

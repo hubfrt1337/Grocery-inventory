@@ -27,7 +27,7 @@ a{
 .navigation{
     display: flex;
     justify-content: space-evenly;
-    background: linear-gradient(var(--primary), rgb(76, 199, 76));
+    background-color: var(--primary);
     padding: 1.5rem;
     gap: 1rem;
     align-items: center;

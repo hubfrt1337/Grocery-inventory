@@ -32,11 +32,19 @@ async function insertProduct(name, category, quantity, price, url){
 async function insertCategory(category){
     await pool.query("INSERT INTO products (category) VALUES ($1)", [category])
 }
+
+async function getAscProducts(){
+    const {rows} = await pool.query("SELECT * FROM products ORDER BY price");
+    return rows;
+}
+
+
 module.exports = {
     getAllCategories,
     getAllProducts,
     getAllData,
     getSingleCategory,
     insertProduct,
-    insertCategory
+    insertCategory,
+    getAscProducts
 }
