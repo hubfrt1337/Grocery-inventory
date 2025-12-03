@@ -76,8 +76,9 @@ async function getAscProducts(req, res) {
 }
 
 async function deleteProduct(req, res) {
-    const id = req.params.id;
-    await db.deleteProductById(id);
+    const {id, amount} = req.body.id;
+   // await db.deleteProductById(id);
+   console.log(id, amount, "tutaj")
     res.status(200).json({ message: "Product deleted successfully" });
 }
 module.exports = {
@@ -85,5 +86,6 @@ module.exports = {
     getProducts,
     getProductCategory,
     postProduct,
-    postCategory
+    postCategory,
+    deleteProduct
 }

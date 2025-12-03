@@ -16,6 +16,8 @@ formContainer.addEventListener('submit', () => {
 // DELETE form 2x
 btnDelete.forEach(btn => {
     btn.addEventListener("click", () => {
+    value = btn.parentElement.parentElement.querySelector("input[name='productId']").value;
+    deleteContainer.querySelector("input[name='productId']").value = value;
     deleteContainer.style.display = 'flex';
 })
 })
@@ -33,3 +35,4 @@ window.addEventListener("click", (e) => {
     }
 })
 
+let value;

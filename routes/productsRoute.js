@@ -22,4 +22,4 @@ productsRoute.get("/", userControllers.getProducts)
 productsRoute.post('/', upload.single("image"), userControllers.postProduct)
 module.exports = {productsRoute}
 
-//productsRoute.delete('/:id', userControllers.deleteProduct)
+productsRoute.patch('/', userControllers.deleteProduct);
