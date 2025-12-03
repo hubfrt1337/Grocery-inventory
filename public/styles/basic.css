@@ -31,9 +31,23 @@ a{
     padding: 1.5rem;
     gap: 1rem;
     align-items: center;
+    
 }
 .logo{
     font-size: 2rem;
+    
+}
+
+.icon-logo{
+    height: 40px;
+    width: 40px;
+    display: block;
+}
+.logo-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .middle-nav{
@@ -62,6 +76,7 @@ input{
 .categories:hover{
     cursor: pointer;
     color: white;
+    transition: all linear 0.3s;
 }
 
 main{
