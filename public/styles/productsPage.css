@@ -209,9 +209,14 @@ input[type=file]{
     justify-content: space-between;
 }
 .delete-small-image{
+    transition: all linear 0.3s;
     width: 25px;
     height: 25px;
 }
 .delete-small-image:hover{
     transform: scale(1.2)
+}
+.delete-submit-none{
+     border: none;
+     background-color: transparent;
 }

@@ -26,11 +26,12 @@ a{
 
 .navigation{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: var(--primary);
     padding: 1.5rem;
     gap: 1rem;
     align-items: center;
+    
     
 }
 .logo{

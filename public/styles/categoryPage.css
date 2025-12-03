@@ -62,7 +62,8 @@
     
 }
 .add:hover{
-    background-color: rgb(20, 214, 20);
+    transition: all linear 0.3s;
+    transform:  scale(1.1);
 }
 
 .categories-flex div:hover {

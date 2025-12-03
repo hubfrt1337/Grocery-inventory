@@ -20,9 +20,7 @@
                 </div>
             </a>
         </div>
-        <div class="middle-nav">
-            <input class="middle-input" type="text" placeholder="Search">
-        </div>
+        
         <div class="right-nav">
             <div class="products"><a href="/products">Products</a></div>
             <div class="categories"><a href="/categories">Categories</a></div>
@@ -124,7 +122,7 @@
                                 <input type="hidden" name="sort" value="<%= typeof sort !== 'undefined' ? sort : '' %>">
                                 <input type="hidden" name="category"
                                     value="<%= typeof category !== 'undefined' ? category : '' %>">
-                                <button type="submit">
+                                <button class="delete-submit-none" type="submit">
                                     <img class="delete-small-image" src="/delete.png" alt="">
                                 </button>
                             </div>
