@@ -107,7 +107,7 @@
                     <form class="form-add form-delete-js" action="/products" method="PATCH">
                         <label for="amount">Delete amount of products:</label>
                         <div class="opak-delete">
-                            <input type="number" min="-1" id="amount" name="amount" placeholder="0">
+                            <input type="number" value="<%= product.quantity %>" min="-1" id="amount" name="amount" placeholder="0">
                             <input type="hidden" name="productId" value="<%= product.id %>">
                             <button type="submit"> 
                                 <img class="delete-small-image" src="/delete.png" alt="">
