@@ -84,9 +84,16 @@ async function getAscProducts(req, res) {
 
 async function deleteProduct(req, res) {
     const {productId, amount, sort, category} = req.body;
-    // TODO: actually delete/update product in DB (e.g. db.deleteProductById or db.decrementQuantity)
-    console.log('delete request:', { productId, amount });
-
+    
+    const product = await db.selectProductById(productId)
+    let productQuantity;
+    product.forEach(pr => productQuantity = pr.quantity)
+    let quantity = productQuantity - amount;
+    if((quantity) > 0){
+        await db.decrementQuantity(productId, quantity)
+    } else {
+        await db.deleteProduct(productId);
+    }
     // Preserve filters when redirecting back to /products
     const params = [];
     if (sort && sort.length) params.push(`sort=${encodeURIComponent(sort)}`);
