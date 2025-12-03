@@ -49,7 +49,6 @@ async function getProducts(req, res) {
 async function getProductCategory(req, res) {
     const product = await db.getSingleCategory(req.params.id);
     const unique = returnUniqueArray(await db.getAllData())
-    console.log("działa to w ogole?")
     res.render("products", { products: product, productsCategory: unique })
 }
 
@@ -60,7 +59,15 @@ async function postProduct(req, res) {
     const { name, quantity, price, category } = req.body;
     const url = req.file.filename;
     await db.insertProduct(name, category, quantity, price, url)
-    res.redirect("/products")
+    // preserve current filters (if any) after adding product
+    const returnSort = req.body.sort;
+    const returnCategory = req.body.category;
+    let redirectUrl = '/products';
+    const params = [];
+    if (returnSort && returnSort.length) params.push(`sort=${encodeURIComponent(returnSort)}`);
+    if (returnCategory && returnCategory.length) params.push(`category=${encodeURIComponent(returnCategory)}`);
+    if (params.length) redirectUrl += '?' + params.join('&');
+    return res.redirect(redirectUrl);
 }
 
 async function postCategory(req, res) {
@@ -76,10 +83,17 @@ async function getAscProducts(req, res) {
 }
 
 async function deleteProduct(req, res) {
-    const {id, amount} = req.body.id;
-   // await db.deleteProductById(id);
-   console.log(id, amount, "tutaj")
-    res.status(200).json({ message: "Product deleted successfully" });
+    const {productId, amount, sort, category} = req.body;
+    // TODO: actually delete/update product in DB (e.g. db.deleteProductById or db.decrementQuantity)
+    console.log('delete request:', { productId, amount });
+
+    // Preserve filters when redirecting back to /products
+    const params = [];
+    if (sort && sort.length) params.push(`sort=${encodeURIComponent(sort)}`);
+    if (category && category.length) params.push(`category=${encodeURIComponent(category)}`);
+    let redirectUrl = '/products';
+    if (params.length) redirectUrl += '?' + params.join('&');
+    return res.redirect(redirectUrl);
 }
 module.exports = {
     getCategories,

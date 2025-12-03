@@ -17,9 +17,10 @@ formContainer.addEventListener('submit', () => {
 btnDelete.forEach(btn => {
     btn.addEventListener("click", () => {
     value = btn.parentElement.parentElement.querySelector("input[name='productId']").value;
-    amount = btn.parentElement.parentElement.querySelector("input[name='amount']").value;
-    deleteContainer.querySelector("input[name='amount']").value = amount;
-    deleteContainer.querySelector("input[name='amount']").placeholder = amount;
+    // get the current quantity to set as placeholder
+    //amount = btn.parentElement.parentElement.querySelector("input[name='amount']").value;
+    //deleteContainer.querySelector("input[name='amount']").value = amount;
+    //deleteContainer.querySelector("input[name='amount']").placeholder = amount;
     deleteContainer.querySelector("input[name='productId']").value = value;
     deleteContainer.style.display = 'flex';
 })

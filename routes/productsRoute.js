@@ -19,7 +19,9 @@ productsRoute.get("/", userControllers.getProducts)
 
 // productsRoute.get("/:id", userControllers.getProductCategory)
 
+productsRoute.post('/delete', userControllers.deleteProduct);
+
 productsRoute.post('/', upload.single("image"), userControllers.postProduct)
 module.exports = {productsRoute}
 
-productsRoute.patch('/', userControllers.deleteProduct);
+

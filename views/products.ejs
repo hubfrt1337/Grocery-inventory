@@ -29,10 +29,13 @@
                 <input type="file" name="image" id="image" accept="image/*" required>
                 <label for="name">Product name:</label>
                 <input type="text" id="name" name="name" required>
+                <!-- keep current filters so they persist after submitting this form -->
+                <input type="hidden" name="sort" value="<%= typeof sort !== 'undefined' ? sort : '' %>">
+                <input type="hidden" name="category" value="<%= typeof category !== 'undefined' ? category : '' %>">
                 <div class="select-container">
                     <label for="category">Category:</label>
                     <select id="category" name="category" required>
-                        <% if(productsCategory.length> 0){
+                        <% if(productsCategory !== 'undefined' && productsCategory.length > 0 ){
                             productsCategory.forEach(category => {
                             %> <option value="<%= category %>">
                                 <%= category %>
@@ -104,11 +107,14 @@
                     </div>
                      <!-- Deleting/updating form -->
                 <div class="delete-container">
-                    <form class="form-add form-delete-js" action="/products" method="PATCH">
+                    <form class="form-add form-delete-js" action="/products/delete" method="post">
                         <label for="amount">Delete amount of products:</label>
                         <div class="opak-delete">
-                            <input type="number" value="<%= product.quantity %>" min="-1" id="amount" name="amount" placeholder="0">
-                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <input type="number" min="-1" id="amount" name="amount" placeholder="0" required>
+                                <input type="hidden" name="productId" value="<%= product.id %>">
+                                <!-- preserve current filters so they remain selected after delete -->
+                                <input type="hidden" name="sort" value="<%= typeof sort !== 'undefined' ? sort : '' %>">
+                                <input type="hidden" name="category" value="<%= typeof category !== 'undefined' ? category : '' %>">
                             <button type="submit"> 
                                 <img class="delete-small-image" src="/delete.png" alt="">
                             </button>
