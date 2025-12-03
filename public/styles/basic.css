@@ -94,3 +94,11 @@ footer{
     text-align: center;
     font-weight: bold;
 }
+
+
+@media screen and (max-width: 500px){
+    .products,
+    .categories{
+        font-size: 1rem;
+    }
+}

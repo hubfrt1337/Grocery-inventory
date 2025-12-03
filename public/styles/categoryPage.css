@@ -1,11 +1,12 @@
 .categories-flex{
-    width: 90vw;
+    width: 80vw;
     max-width: 1000px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr) );
     gap: 20px;
     margin: auto;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 .single-category{
     height: 110px;
