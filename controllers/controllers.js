@@ -25,10 +25,10 @@ async function getProducts(req, res) {
         if (sort && !category) {
             // render all products ordered
             const product = await db.getAllSorted(sort)
-            return res.render("products", { products: product, productsCategory: unique })
+            return res.render("products", { products: product, productsCategory: unique, sort: sort })
         } else if (category && !sort) {
             const product = category === "all" ? products : await db.getSingleCategory(category)
-            return res.render("products", { products: product, productsCategory: unique })
+            return res.render("products", { products: product, productsCategory: unique, category: category })
         } else {
             // both sort and category present, or other combinations
             let product;
@@ -37,7 +37,7 @@ async function getProducts(req, res) {
             } else {
                 product = await db.getSortedProducts(sort, category)
             }
-            return res.render("products", { products: product, productsCategory: unique })
+            return res.render("products", { products: product, productsCategory: unique, sort: sort, category: category })
         }
     }
 

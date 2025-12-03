@@ -57,11 +57,12 @@
                     <label class="sort-label">Sort by price:</label>
                     <div class="div-asc">
                         <label class="label-asc" for="asc">Ascending </label>
-                        <input type="radio" id="asc" name="sort" value="asc">
+                        <input type="radio" id="asc" name="sort" value="asc"
+                        <% if(typeof sort !== 'undefined' && sort === 'asc') { %> checked <% } %>>
                     </div>
                     <div class="div-desc">
                         <label class="label-desc" for="desc">Descending</label>
-                        <input type="radio" id="desc" name="sort" value="desc">
+                        <input type="radio" id="desc" name="sort" value="desc" <% if(typeof sort !== 'undefined' && sort === 'desc') { %> checked <% } %>>
                     </div>
                 </div>
                 <% if(productsCategory.length> 0) { productsCategory.forEach(prod => {
@@ -70,12 +71,12 @@
                         <label for="<%=prod %>">
                             <%= prod %>
                         </label>
-                        <input type="radio" id="<%=prod %>" name="category" value="<%=prod %>">
+                        <input type="radio" id="<%=prod %>" name="category" value="<%=prod %>" <% if(typeof category !== 'undefined' && category === prod) { %> checked <% } %>>
                     </div>
                     <% }) } %>
                     <div class="category-row">
                         <label for="all">All</label>
-                        <input type="radio" id="all" name="category" value="all">
+                        <input type="radio" id="all" name="category" value="all" <% if(typeof category !== 'undefined' && category === 'all') { %> checked <% } %>>
                     </div>
             </form>
         </div>
