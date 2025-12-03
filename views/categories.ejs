@@ -40,7 +40,8 @@
         <div class="categories-flex">
             <% if(categories.length > 0) categories.forEach(cat => {
                 %>
-                <div class="single-category"><%=cat %></div>
+                <a href="/products?category=<%=cat %>">
+                     <div class="single-category"><%=cat %></div></a>
             <% }) %>
         </div>
         
