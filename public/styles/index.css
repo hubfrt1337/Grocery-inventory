@@ -97,3 +97,15 @@ main{
 .cat:hover{
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 500px){
+    .container{
+        width: 80vw;
+    }
+
+    .prod,
+    .cat{
+        padding: 1.5rem 3rem;
+        font-size: 2rem;
+    }
+}
