@@ -60,6 +60,8 @@ main{
     justify-content: center;
     gap: 0.5rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+    
 }
 
 
@@ -174,4 +176,42 @@ input[type=file]{
 .price-filters{
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--third);
+}
+
+
+.trash-image{
+    height: 25px;
+    width: auto;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.trash-image:hover{
+    transform: scale(1.1);
+}
+
+
+.delete-container{
+    z-index: 2;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.opak-delete{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.delete-small-image{
+    width: 25px;
+    height: 25px;
+}
+.delete-small-image:hover{
+    transform: scale(1.2)
 }

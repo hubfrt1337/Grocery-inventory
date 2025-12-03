@@ -74,6 +74,12 @@ async function getAscProducts(req, res) {
     const products = await db.getAllData();
     res.render("products", { products: product, productsCategory: products })
 }
+
+async function deleteProduct(req, res) {
+    const id = req.params.id;
+    await db.deleteProductById(id);
+    res.status(200).json({ message: "Product deleted successfully" });
+}
 module.exports = {
     getCategories,
     getProducts,
