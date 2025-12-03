@@ -58,6 +58,9 @@ async function decrementQuantity(id, quantity ){
     await pool.query(`UPDATE products SET quantity = ($1) WHERE id = ($2)`, [quantity, id]);
 }
 
+async function deleteProduct(id){
+    await pool.query("DELETE FROM products WHERE id = ($1)", [id])
+}
 
 module.exports = {
     getAllCategories,
@@ -69,5 +72,6 @@ module.exports = {
     getSortedProducts,
     getAllSorted,
     selectProductById,
-    decrementQuantity
+    decrementQuantity,
+    deleteProduct
 }
