@@ -1,4 +1,5 @@
 .categories-flex{
+    width: 90vw;
     max-width: 1000px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr) );
@@ -10,11 +11,14 @@
     height: 110px;
     text-align: center;
     font-size: 2rem;
-    background-color: var(--third);
+    background-color: var(--primary);
     padding: 1rem;
     border-radius: 1rem;
-}
+    color: black;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
 
+}
+/*
 .categories-flex div:nth-child(1){
     background-color: yellow;
 }
@@ -39,7 +43,7 @@
 .categories-flex div:nth-child(8){
     background-color: rgb(0, 217, 255);
 }
-
+*/
 .category-title{
     display: flex;
     margin-top: 2rem;
@@ -51,7 +55,7 @@
 }
 .add{
     border: none;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     padding: 0.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
@@ -62,7 +66,8 @@
 }
 
 .categories-flex div:hover {
-    opacity: 0.6;
+    transition: all linear 0.3s;
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -113,4 +118,22 @@
 }
 .submit:hover{
     background-color: rgb(20, 214, 20);
+}
+
+main{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/food.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+    background-blend-mode: darken;
+    flex-direction: column;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
